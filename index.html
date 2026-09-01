@@ -483,6 +483,11 @@ footer a:hover{color:#fff}
 .cert-tg-btn{display:inline-flex;align-items:center;gap:8px;background:#2196f3;color:#fff;font-weight:800;font-size:14px;padding:12px 24px;border-radius:30px;border:none;cursor:pointer;transition:.2s;font-family:inherit}
 .cert-tg-btn:hover{background:#1565c0;transform:scale(1.03)}
 
+/* FOUC fix for hero images */
+.rc-icon img, .deco-card .ic img, .ec-icon img { display: block; max-width: 100%; height: auto; }
+.rc-icon img { width: 84px; border-radius: 16px; }
+.deco-card .ic img { width: 96px; border-radius: 14px; margin: 0 auto; }
+@media(max-width:900px) { .deco-card .ic img { width: 72px; } }
 </style>
 </head>
 <body>
@@ -1756,8 +1761,7 @@ const TG_PROXY_URL = 'https://antidoni-tg.abzalbejokker11.workers.dev'; // 2-USU
 // 1-USUL: Bot token — XAVFSIZLIK: token bo'laklab saqlangan, shunda avtomatik
 // token-skanerlar (regex qidiruv) uni topa olmaydi. O'zgartirish kerak bo'lsa,
 // yangi tokenni xuddi shunday bo'laklarga bo'lib yozing.
-const _tk = ['88488','14331','AAGRKxaLvv','NqnSTveNZv','kAGb_8iiDGoNWBQ'];
-const BOT_TOKEN    = _tk[0] + _tk[1] + ':' + _tk[2] + _tk[3] + _tk[4];
+const BOT_TOKEN    = 'BOT_TOKEN_BU_YERGA';
 const TG_CHANNEL   = '@antidopi';         // Sertifikat yuboriladigan kanal
 const TG_ADMIN_ID  = '';                    // (ixtiyoriy) Adminga nusxa uchun Telegram ID raqami
 const ADMIN_ID      = 'ADMIN';   // Worker o'zi haqiqiy ID ga almashtiradi
@@ -3805,20 +3809,20 @@ if(document.readyState === 'loading'){
 
 <style id="icon3d-css">
 /* ── 3D ZNACHOKLAR (rasmlar o'zgartirilmagan) ── */
-.rc-icon .icon3d{width:84px;height:auto;border-radius:16px;display:block;
+.rc-icon img, .rc-icon .icon3d{width:84px;height:auto;border-radius:16px;display:block;
   box-shadow:0 10px 24px -6px rgba(30,64,175,.35);
   animation:icon-bob 4.5s ease-in-out infinite;transform-origin:center bottom}
-.deco-card .ic .icon3d{width:96px;height:auto;border-radius:14px;display:block;margin:0 auto;
+.deco-card .ic img, .deco-card .ic .icon3d{width:96px;height:auto;border-radius:14px;display:block;margin:0 auto;
   box-shadow:0 12px 28px -8px rgba(30,64,175,.4);
   animation:icon-bob 5s ease-in-out infinite}
-.role-card:nth-child(2) .icon3d,.deco-card:nth-child(2) .icon3d{animation-delay:.6s}
-.role-card:nth-child(3) .icon3d,.deco-card:nth-child(3) .icon3d{animation-delay:1.2s}
-.role-card:nth-child(4) .icon3d,.deco-card:nth-child(4) .icon3d{animation-delay:1.8s}
+.role-card:nth-child(2) img, .role-card:nth-child(2) .icon3d,.deco-card:nth-child(2) img, .deco-card:nth-child(2) .icon3d{animation-delay:.6s}
+.role-card:nth-child(3) img, .role-card:nth-child(3) .icon3d,.deco-card:nth-child(3) img, .deco-card:nth-child(3) .icon3d{animation-delay:1.2s}
+.role-card:nth-child(4) img, .role-card:nth-child(4) .icon3d,.deco-card:nth-child(4) img, .deco-card:nth-child(4) .icon3d{animation-delay:1.8s}
 @keyframes icon-bob{
   0%,100%{transform:translateY(0) rotateZ(0) scale(1)}
   30%{transform:translateY(-8px) rotateZ(-2.5deg) scale(1.04)}
   60%{transform:translateY(-3px) rotateZ(2deg) scale(1.02)}}
-.role-card:hover .icon3d{animation:icon-hover .5s ease forwards;
+.role-card:hover img, .role-card:hover .icon3d{animation:icon-hover .5s ease forwards;
   box-shadow:0 18px 40px -8px rgba(37,99,235,.55)}
 @keyframes icon-hover{to{transform:translateY(-10px) scale(1.14) rotateZ(-3deg)}}
 /* Kartaga yaltiroq (shine) effekt */
@@ -3845,7 +3849,7 @@ if(document.readyState === 'loading'){
 /* Telefonda hero'dagi 4 ta 3D znachok 2x2 bo'lib ko'rinadi (avval yashirilardi) */
 @media(max-width:900px){
   .hero-deco{display:grid !important;grid-template-columns:1fr 1fr;gap:12px;width:100%;margin-top:22px}
-  .deco-card .ic .icon3d{width:72px}
+  .deco-card .ic img, .deco-card .ic .icon3d{width:72px}
 }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
@@ -3955,7 +3959,7 @@ try{
   .hero-grid{grid-template-columns:1fr}
   .hero-deco{width:100% !important;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
   .deco-card{min-width:0}
-  .deco-card .ic .icon3d{width:72px;max-width:100%}
+  .deco-card .ic img, .deco-card .ic .icon3d{width:72px;max-width:100%}
 }
 /* Har qanday kenglikda: nav o'ralib header'dan tashqariga chiqmasin */
 .header-wrap{height:auto;min-height:64px}
