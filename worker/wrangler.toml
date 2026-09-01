@@ -1,0 +1,6 @@
+name = "ai-dori"
+main = "ai-worker.js"
+compatibility_date = "2024-02-08"
+
+[ai]
+binding = "AI"
